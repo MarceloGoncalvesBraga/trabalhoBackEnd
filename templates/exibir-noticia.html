@@ -1,0 +1,30 @@
+
+{% extends "layout_base/base.html" %}
+{% block conteudo %}
+<div class="blog-largo">
+  <div class="container">
+
+  <div class="row">
+        <div class="col-md-5 mg-top-10">
+           <img src="{{ url_for('static', filename='img/'+ noticia.get_img())}}" class="img-center-artigo-ativo">
+        </div>
+   
+      <div class="col-md-7">
+        <div class="col-md-12">
+         <h1>{{ noticia.get_titulo() }}</h1>
+      
+          <p>{{ noticia.get_conteudo()|safe }}</p>
+       
+        </div>
+        <div class="col-md-12">
+         <p>
+          <span class="text-cat">Curtidas:{{ noticia.get_likes() }} </span><span class="text-date"> Publicado: {{ noticia.get_data() }} </span> </span><span class="text-visto"> visualizações: {{ noticia.get_visto() }} </span></p>
+          <p><a href="{{url_for('home')}}">Voltar </a></p> 
+        </div>
+      </div><!--end md-7-->
+
+  </div><!--end row-->
+</div><!--end container-->
+</div><!--end box-largo-->
+
+{% endblock %}

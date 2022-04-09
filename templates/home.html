@@ -1,0 +1,45 @@
+
+
+
+{% extends "layout_base/base.html" %}
+{% block conteudo %}
+
+<div class="box-largo">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-9 mg-10">
+            <h1>Lista de Noticias</h1>
+            {% for estado in estados %}
+                <p class="estado"><a href="{{url_for('noticias_do_estado', uf=estado.get_uf()) }}">{{ estado.get_nome() }}</a></p>
+
+                {% for noticia in estado.get_noticia_lista() %}
+                <p><a href="{{url_for('exibir_noticia', id=noticia.get_id()) }}">{{ noticia.get_titulo() }}</a></p>
+                {% endfor %}
+            {% endfor %}
+          </div><!-- end col-md-9--> 
+
+          <div class="col-md-3 mg-10">
+
+            {% for estado in estados %}
+            <a href="{{url_for('noticias_do_estado', uf=estado.get_uf()) }}">
+              <img src="{{ url_for('static', filename='bandeiras/'+estado.get_uf())}}.png" alt="{{estado.get_nome()}}" class="flags-left">
+            </a>
+           
+            {% endfor %}
+
+          </div><!-- end col-md-3--> 
+          
+        </div> <!-- end row -->
+
+        <div class="row">
+          <div class="col-md-8">
+     
+          </div><!-- end col-md-12--> 
+
+        </div> <!-- end row -->
+
+     </div> <!-- end container -->
+  </div> <!--end box-largo -->
+ 
+<!-- End banner Area -->
+{% endblock %}

@@ -1,0 +1,41 @@
+
+{% extends "layout_base/base.html" %}
+{% block conteudo %}
+
+<div class="blog-largo">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-10 mg-top-10">
+      <div class="row">
+      {% for noticia in noticias %}
+        <div class="col-md-5 mg-top-10">
+          <a href="{{url_for('exibir_noticia',id=noticia.get_id()) }}">  <img src="{{ url_for('static', filename='img/'+ noticia.get_img() )}}" class="img-center-artigo"> </a>
+        </div><!--end md-5-->
+   
+      <div class="col-md-7">
+        <div class="col-md-12">
+          
+          <a href="{{url_for('exibir_noticia', id=noticia.get_id()) }}">  <h1>{{ noticia.get_titulo() }}</h1></a>
+          <p>{{ noticia.get_titulo() }}</p>
+       
+        </div>
+        <div class="col-md-12">
+          <p><span class="text-cat">Curtidas:{{ noticia.get_likes() }} </span><span class="text-date"> Publicado: {{ noticia.get_data() }} </span></p>
+          
+        </div>
+       </div><!--end md-7-->
+      {% endfor %}
+      <p><a href="{{url_for('home')}}">Voltar </a></p> 
+      </div><!--end row -->
+      </div><!--end md-10-->
+      <div class="col-md-2 mg-top-10">
+        <a href="{{url_for('noticias_do_estado', uf=estado) }}">
+          <img src="{{ url_for('static', filename='bandeiras/'+estado)}}.png" alt="{{estado}}" class="flags-left">
+        </a>
+      </div>
+
+  </div><!--end row-->
+</div><!--end container-->
+</div><!--end box-largo-->
+
+{% endblock %}
