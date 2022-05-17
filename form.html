@@ -18,6 +18,9 @@ def salvar():
 
       nome = request.POST["nome"]
       idade = request.POST["idade"]
+      
+      nome = request.form.get('nome','vazio')
+      idade = request.form.get('idade','vazio')
 
       print(nome,"<br>", idade)
       
