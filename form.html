@@ -12,7 +12,19 @@
 
 @main.route("/salvar", methods=['POST'])
 def salvar():
+   if request(methods=['POST']):
+  if request.methods == 'POST':
+      #pessoa = Pessoa('', 0)
 
+      nome = request.POST["nome"]
+      idade = request.POST["idade"]
 
+      print(nome,"<br>", idade)
+      
+
+   else:
+       print("Metodo nao aceito")
+
+   return render_template('index.html')
 
 https://aboutreact.com/react-native-search-bar-filter-on-listview/
